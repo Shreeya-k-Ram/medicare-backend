@@ -25,4 +25,24 @@ public class PatientController {
     public List<Patient> getAllPatients() {
         return patientService.getAllPatients();
     }
+
+    @GetMapping("/{id}")
+    public Patient getPatientId(@PathVariable Long id) {
+        Patient patientById = patientService.getPatientById(id);
+        return patientById;
+
+    }
+
+    @PutMapping("/{id}")
+    public Patient updatePatient(@PathVariable Long id, @RequestBody Patient patient) {
+        return patientService.updatePatient(id, patient);
+    }
+
+    @DeleteMapping("/{id}")
+    public String deletePatient(@PathVariable Long id) {
+        patientService.deletePatient(id);
+
+        return "Patient deleted successfully!";
+    }
+
 }

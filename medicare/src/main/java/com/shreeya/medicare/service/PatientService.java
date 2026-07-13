@@ -22,4 +22,34 @@ public class PatientService {
     public List<Patient> getAllPatients() {
         return patientRepository.findAll();
     }
+
+    public Patient getPatientById(Long id) {
+        return patientRepository.findById(id).orElse(null);
+    }
+
+    // Update Patient
+    public Patient updatePatient(Long id, Patient updatedPatient) {
+
+        Patient patient = patientRepository.findById(id).orElse(null);
+
+        if (patient != null) {
+
+            patient.setName(updatedPatient.getName());
+            patient.setAge(updatedPatient.getAge());
+            patient.setGender(updatedPatient.getGender());
+            patient.setPhone(updatedPatient.getPhone());
+            patient.setEmail(updatedPatient.getEmail());
+            patient.setAddress(updatedPatient.getAddress());
+            patient.setDisease(updatedPatient.getDisease());
+
+            return patientRepository.save(patient);
+        }
+
+        return null;
+    }
+
+    // Delete Patient
+    public void deletePatient(Long id) {
+        patientRepository.deleteById(id);
+    }
 }
