@@ -2,6 +2,7 @@ package com.shreeya.medicare.controller;
 
 import com.shreeya.medicare.entity.Patient;
 import com.shreeya.medicare.service.PatientService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +17,7 @@ public class PatientController {
 
     // Add Patient
     @PostMapping
-    public Patient addPatient(@RequestBody Patient patient) {
+    public Patient addPatient(@Valid @RequestBody Patient patient) {
         return patientService.savePatient(patient);
     }
 
