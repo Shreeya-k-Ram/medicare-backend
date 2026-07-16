@@ -4,6 +4,7 @@ import com.shreeya.medicare.entity.Patient;
 import com.shreeya.medicare.service.PatientService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,8 +18,10 @@ public class PatientController {
 
     // Add Patient
     @PostMapping
-    public Patient addPatient(@Valid @RequestBody Patient patient) {
-        return patientService.savePatient(patient);
+    public ResponseEntity<Patient> addPatient(@Valid @RequestBody Patient patient) {
+
+        Patient savedPatient = patientService.savePatient(patient);
+        return ResponseEntity.status(201).body(savedPatient);
     }
 
     // Get All Patients
@@ -28,22 +31,28 @@ public class PatientController {
     }
 
     @GetMapping("/{id}")
-    public Patient getPatientId(@PathVariable Long id) {
-        Patient patientById = patientService.getPatientById(id);
-        return patientById;
+    public ResponseEntity<Patient> getPatientId(@PathVariable Long id) {
+        Patient patient = patientService.getPatientById(id);
+
+        if(patient == null)
+            return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(patient);
 
     }
 
     @PutMapping("/{id}")
-    public Patient updatePatient(@PathVariable Long id, @RequestBody Patient patient) {
-        return patientService.updatePatient(id, patient);
+    public ResponseEntity<Patient> updatePatient(@PathVariable Long id, @RequestBody Patient updatedPatient) {
+        Patient patient = patientService.updatePatient(id, updatedPatient);
+
+        if(patient == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(patient);
     }
 
     @DeleteMapping("/{id}")
-    public String deletePatient(@PathVariable Long id) {
+    public ResponseEntity<Void> deletePatient(@PathVariable Long id) {
         patientService.deletePatient(id);
-
-        return "Patient deleted successfully!";
+        return ResponseEntity.noContent().build();
     }
-
 }
