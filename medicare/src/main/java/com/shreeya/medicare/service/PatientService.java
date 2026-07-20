@@ -1,5 +1,6 @@
 package com.shreeya.medicare.service;
 
+import com.shreeya.medicare.dto.PatientDTO;
 import com.shreeya.medicare.entity.Patient;
 import com.shreeya.medicare.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,12 @@ public class PatientService {
         return patientRepository.findAll();
     }
 
-    public Patient getPatientById(Long id) {
-        return patientRepository.findById(id).orElse(null);
+    public PatientDTO getPatientById(Long id) {
+        Patient patient = patientRepository.findById(id).orElse(null);
+        if (patient == null) {
+            return null;
+        }
+        return convertToDTO(patient);
     }
 
     // Update Patient
@@ -51,5 +56,19 @@ public class PatientService {
     // Delete Patient
     public void deletePatient(Long id) {
         patientRepository.deleteById(id);
+    }
+
+    public PatientDTO convertToDTO(Patient patient) {
+        PatientDTO dto = new PatientDTO();
+
+        dto.setId(patient.getId());
+        dto.setName(patient.getName());
+        dto.setAge(patient.getAge());
+        dto.setGender(patient.getGender());
+        dto.setPhone(patient.getPhone());
+        dto.setEmail(patient.getEmail());
+        dto.setDisease(patient.getDisease());
+
+        return dto;
     }
 }

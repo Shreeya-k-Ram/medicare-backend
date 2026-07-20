@@ -1,5 +1,6 @@
 package com.shreeya.medicare.controller;
 
+import com.shreeya.medicare.dto.PatientDTO;
 import com.shreeya.medicare.entity.Patient;
 import com.shreeya.medicare.service.PatientService;
 import jakarta.validation.Valid;
@@ -31,8 +32,8 @@ public class PatientController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Patient> getPatientId(@PathVariable Long id) {
-        Patient patient = patientService.getPatientById(id);
+    public ResponseEntity<PatientDTO> getPatientById(@PathVariable Long id) {
+        PatientDTO patient = patientService.getPatientById(id);
 
         if(patient == null)
             return ResponseEntity.notFound().build();
