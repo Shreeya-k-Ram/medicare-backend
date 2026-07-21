@@ -1,6 +1,7 @@
 package com.shreeya.medicare.service;
 
-import com.shreeya.medicare.dto.PatientDTO;
+import com.shreeya.medicare.dto.PatientRequestDTO;
+import com.shreeya.medicare.dto.PatientResponseDTO;
 import com.shreeya.medicare.entity.Patient;
 import com.shreeya.medicare.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,33 +25,32 @@ public class PatientService {
         return patientRepository.findAll();
     }
 
-    public PatientDTO getPatientById(Long id) {
+    public PatientResponseDTO getPatientById(Long id) {
         Patient patient = patientRepository.findById(id).orElse(null);
-        if (patient == null) {
+        if (patient == null || !patient.isActive()) {
             return null;
         }
         return convertToDTO(patient);
     }
 
     // Update Patient
-    public Patient updatePatient(Long id, Patient updatedPatient) {
+    public PatientResponseDTO updatePatient(Long id, PatientRequestDTO patientRequestDTO) {
+        Patient existingPatient = patientRepository.findById(id).orElse(null);
 
-        Patient patient = patientRepository.findById(id).orElse(null);
-
-        if (patient != null) {
-
-            patient.setName(updatedPatient.getName());
-            patient.setAge(updatedPatient.getAge());
-            patient.setGender(updatedPatient.getGender());
-            patient.setPhone(updatedPatient.getPhone());
-            patient.setEmail(updatedPatient.getEmail());
-            patient.setAddress(updatedPatient.getAddress());
-            patient.setDisease(updatedPatient.getDisease());
-
-            return patientRepository.save(patient);
+        if (existingPatient == null || !existingPatient.isActive()) {
+            return null;
         }
+        existingPatient.setName(patientRequestDTO.getName());
+        existingPatient.setAge(patientRequestDTO.getAge());
+        existingPatient.setGender(patientRequestDTO.getGender());
+        existingPatient.setPhone(patientRequestDTO.getPhone());
+        existingPatient.setEmail(patientRequestDTO.getEmail());
+        existingPatient.setAddress(patientRequestDTO.getAddress());
+        existingPatient.setDisease(patientRequestDTO.getDisease());
 
-        return null;
+        Patient updatedPatient = patientRepository.save(existingPatient);
+
+        return convertToDTO(updatedPatient);
     }
 
     // Delete Patient
@@ -58,8 +58,8 @@ public class PatientService {
         patientRepository.deleteById(id);
     }
 
-    public PatientDTO convertToDTO(Patient patient) {
-        PatientDTO dto = new PatientDTO();
+    public PatientResponseDTO convertToDTO(Patient patient) {
+        PatientResponseDTO dto = new PatientResponseDTO();
 
         dto.setId(patient.getId());
         dto.setName(patient.getName());
@@ -70,5 +70,18 @@ public class PatientService {
         dto.setDisease(patient.getDisease());
 
         return dto;
+    }
+
+    public boolean deactivatePatient(Long id) {
+        Patient patient = patientRepository.findById(id).orElse(null);
+
+        if (patient == null || !patient.isActive()) {
+            return false;
+        }
+
+        patient.setActive(false);
+        patientRepository.save(patient);
+
+        return true;
     }
 }

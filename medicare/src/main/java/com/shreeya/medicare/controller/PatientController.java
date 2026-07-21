@@ -1,6 +1,7 @@
 package com.shreeya.medicare.controller;
 
-import com.shreeya.medicare.dto.PatientDTO;
+import com.shreeya.medicare.dto.PatientRequestDTO;
+import com.shreeya.medicare.dto.PatientResponseDTO;
 import com.shreeya.medicare.entity.Patient;
 import com.shreeya.medicare.service.PatientService;
 import jakarta.validation.Valid;
@@ -9,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/patients")
@@ -32,28 +34,33 @@ public class PatientController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PatientDTO> getPatientById(@PathVariable Long id) {
-        PatientDTO patient = patientService.getPatientById(id);
+    public ResponseEntity<PatientResponseDTO> getPatientById(@PathVariable Long id) {
+        PatientResponseDTO patient = patientService.getPatientById(id);
 
-        if(patient == null)
+        if (patient == null)
             return ResponseEntity.notFound().build();
         return ResponseEntity.ok(patient);
 
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Patient> updatePatient(@PathVariable Long id, @RequestBody Patient updatedPatient) {
-        Patient patient = patientService.updatePatient(id, updatedPatient);
+    public ResponseEntity<PatientResponseDTO> updatePatient(@PathVariable Long id, @Valid @RequestBody PatientRequestDTO patientRequestDTO) {
 
-        if(patient == null) {
+        PatientResponseDTO updatedPatient = patientService.updatePatient(id, patientRequestDTO);
+
+        if (updatedPatient == null) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(patient);
+
+        return ResponseEntity.ok(updatedPatient);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletePatient(@PathVariable Long id) {
-        patientService.deletePatient(id);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<String> deactivatePatient(@PathVariable Long id) {
+        boolean deleted = patientService.deactivatePatient(id);
+        if (!deleted) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(Map.of("message", "Patient Deactivated Successfully").toString());
     }
 }

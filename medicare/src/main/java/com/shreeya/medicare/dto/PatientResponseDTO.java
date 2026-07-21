@@ -1,40 +1,20 @@
-package com.shreeya.medicare.entity;
+package com.shreeya.medicare.dto;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
+public class PatientResponseDTO {
 
-@Entity
-public class Patient {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @NotBlank(message = "Name cannot be blank")
     private String name;
-
-    @Min(value = 1, message = "Age must be greater than zero")
-    @Max(value = 120, message = "Age cannot exceed 120")
     private int age;
-
-    @NotBlank(message = "Gender cannot be blank")
     private String gender;
-
-    @NotBlank(message = "Phone cannot be blank")
     private String phone;
-
-    @Email(message = "Enter a valid email")
-    @NotBlank(message = "Email cannot be blank")
     private String email;
-
-    @NotBlank(message = "Address cannot be blank")
-    private String address;
-
-    @NotBlank(message = "Disease cannot be blank")
     private String disease;
 
-    public Patient() {
+    // Constructor
+    public PatientResponseDTO() {
     }
+
+    // Getters and Setters
 
     public Long getId() {
         return id;
@@ -84,14 +64,6 @@ public class Patient {
         this.email = email;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public String getDisease() {
         return disease;
     }
@@ -99,17 +71,4 @@ public class Patient {
     public void setDisease(String disease) {
         this.disease = disease;
     }
-
-    private boolean active = true;
-
-    //Getter
-    public boolean isActive() {
-        return active;
-    }
-
-    //Setter
-    public void setActive(boolean active) {
-        this.active = active;
-    }
-
 }

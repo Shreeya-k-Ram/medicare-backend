@@ -1,26 +1,38 @@
 package com.shreeya.medicare.dto;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 
-public class PatientDTO {
-    private Long id;
+public class PatientRequestDTO {
+
+    @NotBlank(message = "Name cannot be blank")
     private String name;
+
+    @Min(value = 1, message = "Age must be greater than 0")
     private int age;
+
+    @NotBlank(message = "Gender cannot be blank")
     private String gender;
+
+    @NotBlank(message = "Phone cannot be blank")
     private String phone;
+
+    @Email(message = "Enter a valid email")
+    @NotBlank(message = "Email cannot be blank")
     private String email;
+
+    @NotBlank(message = "Address cannot be blank")
+    private String address;
+
+    @NotBlank(message = "Disease cannot be blank")
     private String disease;
 
-    public Long getId() {
-        return id;
+    //Constructor
+    public PatientRequestDTO() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
+    // Getters and Setters
     public String getName() {
         return name;
     }
@@ -59,6 +71,14 @@ public class PatientDTO {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getDisease() {
