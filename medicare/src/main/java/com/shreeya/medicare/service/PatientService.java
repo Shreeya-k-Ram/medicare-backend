@@ -1,5 +1,6 @@
 package com.shreeya.medicare.service;
 
+import java.util.*;
 import com.shreeya.medicare.dto.PatientRequestDTO;
 import com.shreeya.medicare.dto.PatientResponseDTO;
 import com.shreeya.medicare.entity.Patient;
@@ -7,7 +8,9 @@ import com.shreeya.medicare.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 @Service
 public class PatientService {
@@ -83,5 +86,23 @@ public class PatientService {
         patientRepository.save(patient);
 
         return true;
+    }
+
+    public List<PatientResponseDTO> searchPatientByName(String name) {
+        List<Patient> patients = patientRepository.findByNameContainingIgnoreCase(name);
+
+        List<PatientResponseDTO> response = new ArrayList<>();
+
+        for (Patient patient : patients) {
+            response.add(convertToDTO(patient));
+        }
+        return response;
+    }
+
+    public Page<PatientResponseDTO> getPatientsWithPagination(int page, int size) {
+
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Patient> patientPage = patientRepository.findAll(pageable);
+        return patientPage.map(this::convertToDTO);
     }
 }

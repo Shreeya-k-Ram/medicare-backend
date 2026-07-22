@@ -6,6 +6,7 @@ import com.shreeya.medicare.entity.Patient;
 import com.shreeya.medicare.service.PatientService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -51,7 +52,6 @@ public class PatientController {
         if (updatedPatient == null) {
             return ResponseEntity.notFound().build();
         }
-
         return ResponseEntity.ok(updatedPatient);
     }
 
@@ -62,5 +62,24 @@ public class PatientController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(Map.of("message", "Patient Deactivated Successfully").toString());
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<PatientResponseDTO>> searchPatientByName(@RequestParam String name) {
+
+        List<PatientResponseDTO> patients =
+                patientService.searchPatientByName(name);
+        return ResponseEntity.ok(patients);
+    }
+
+    @GetMapping("/page")
+    public ResponseEntity<Page<PatientResponseDTO>> getPatientsWithPagination(
+            @RequestParam int page,
+            @RequestParam int size) {
+
+        Page<PatientResponseDTO> patients =
+                patientService.getPatientsWithPagination(page, size);
+
+        return ResponseEntity.ok(patients);
     }
 }
