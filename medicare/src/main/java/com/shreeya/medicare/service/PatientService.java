@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 @Service
 public class PatientService {
@@ -103,6 +104,25 @@ public class PatientService {
 
         Pageable pageable = PageRequest.of(page, size);
         Page<Patient> patientPage = patientRepository.findAll(pageable);
+        return patientPage.map(this::convertToDTO);
+    }
+
+    public List<PatientResponseDTO> getPatientsSorted(String field) {
+
+        List<Patient> patients = patientRepository.findAll(Sort.by(field));
+        List<PatientResponseDTO> response = new ArrayList<>();
+
+        for (Patient patient : patients) {
+            response.add(convertToDTO(patient));
+        }
+
+        return response;
+    }
+
+    public Page<PatientResponseDTO> getPatientsWithPaginationAndSorting(int page, int size, String field) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by(field));
+        Page<Patient> patientPage = patientRepository.findAll(pageable);
+
         return patientPage.map(this::convertToDTO);
     }
 }

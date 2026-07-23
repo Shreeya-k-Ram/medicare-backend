@@ -67,18 +67,34 @@ public class PatientController {
     @GetMapping("/search")
     public ResponseEntity<List<PatientResponseDTO>> searchPatientByName(@RequestParam String name) {
 
-        List<PatientResponseDTO> patients =
-                patientService.searchPatientByName(name);
+        List<PatientResponseDTO> patients = patientService.searchPatientByName(name);
         return ResponseEntity.ok(patients);
     }
 
     @GetMapping("/page")
-    public ResponseEntity<Page<PatientResponseDTO>> getPatientsWithPagination(
+    public ResponseEntity<Page<PatientResponseDTO>> getPatientsWithPagination(@RequestParam int page, @RequestParam int size) {
+
+        Page<PatientResponseDTO> patients = patientService.getPatientsWithPagination(page, size);
+
+        return ResponseEntity.ok(patients);
+    }
+
+    @GetMapping("/sort")
+    public ResponseEntity<List<PatientResponseDTO>> getPatientsSorted(@RequestParam String field) {
+
+        List<PatientResponseDTO> patients = patientService.getPatientsSorted(field);
+
+        return ResponseEntity.ok(patients);
+    }
+
+    @GetMapping("/page-sort")
+    public ResponseEntity<Page<PatientResponseDTO>> getPatientsWithPaginationAndSorting(
             @RequestParam int page,
-            @RequestParam int size) {
+            @RequestParam int size,
+            @RequestParam String field) {
 
         Page<PatientResponseDTO> patients =
-                patientService.getPatientsWithPagination(page, size);
+                patientService.getPatientsWithPaginationAndSorting(page, size, field);
 
         return ResponseEntity.ok(patients);
     }
