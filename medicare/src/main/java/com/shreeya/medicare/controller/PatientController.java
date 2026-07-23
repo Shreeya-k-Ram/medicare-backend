@@ -73,7 +73,6 @@ public class PatientController {
 
     @GetMapping("/page")
     public ResponseEntity<Page<PatientResponseDTO>> getPatientsWithPagination(@RequestParam int page, @RequestParam int size) {
-
         Page<PatientResponseDTO> patients = patientService.getPatientsWithPagination(page, size);
 
         return ResponseEntity.ok(patients);
@@ -88,10 +87,7 @@ public class PatientController {
     }
 
     @GetMapping("/page-sort")
-    public ResponseEntity<Page<PatientResponseDTO>> getPatientsWithPaginationAndSorting(
-            @RequestParam int page,
-            @RequestParam int size,
-            @RequestParam String field) {
+    public ResponseEntity<Page<PatientResponseDTO>> getPatientsWithPaginationAndSorting(@RequestParam int page, @RequestParam int size, @RequestParam String field) {
 
         Page<PatientResponseDTO> patients =
                 patientService.getPatientsWithPaginationAndSorting(page, size, field);
