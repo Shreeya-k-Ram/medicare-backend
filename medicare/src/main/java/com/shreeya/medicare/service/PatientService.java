@@ -82,7 +82,6 @@ public class PatientService {
         if (patient == null || !patient.isActive()) {
             return false;
         }
-
         patient.setActive(false);
         patientRepository.save(patient);
 
@@ -91,7 +90,6 @@ public class PatientService {
 
     public List<PatientResponseDTO> searchPatientByName(String name) {
         List<Patient> patients = patientRepository.findByNameContainingIgnoreCase(name);
-
         List<PatientResponseDTO> response = new ArrayList<>();
 
         for (Patient patient : patients) {
@@ -115,7 +113,6 @@ public class PatientService {
         for (Patient patient : patients) {
             response.add(convertToDTO(patient));
         }
-
         return response;
     }
 

@@ -80,14 +80,14 @@ public class PatientController {
 
     @GetMapping("/sort")
     public ResponseEntity<List<PatientResponseDTO>> getPatientsSorted(@RequestParam String field) {
-
         List<PatientResponseDTO> patients = patientService.getPatientsSorted(field);
 
         return ResponseEntity.ok(patients);
     }
 
     @GetMapping("/page-sort")
-    public ResponseEntity<Page<PatientResponseDTO>> getPatientsWithPaginationAndSorting(@RequestParam int page, @RequestParam int size, @RequestParam String field) {
+    public ResponseEntity<Page<PatientResponseDTO>> getPatientsWithPaginationAndSorting(@RequestParam int page, @RequestParam int size,
+                                                                                        @RequestParam String field) {
 
         Page<PatientResponseDTO> patients =
                 patientService.getPatientsWithPaginationAndSorting(page, size, field);
