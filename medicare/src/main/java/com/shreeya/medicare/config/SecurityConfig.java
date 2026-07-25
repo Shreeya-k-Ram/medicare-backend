@@ -1,6 +1,5 @@
 package com.shreeya.medicare.config;
 
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -24,6 +23,7 @@ public class SecurityConfig {
         return http.build();
     }
 
+    @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
