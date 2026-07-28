@@ -1,20 +1,21 @@
 package com.shreeya.medicare.dto;
 
 public class LoginResponseDTO {
-    private String message;
+
+    private String token;
 
     public LoginResponseDTO() {
     }
 
-    public LoginResponseDTO(String message) {
-        this.message = message;
+    public LoginResponseDTO(String token) {
+        this.token = token;
     }
 
-    public String getMessage() {
-        return message;
+    public String getToken() {
+        return token;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setToken(String token) {
+        this.token = token;
     }
 }

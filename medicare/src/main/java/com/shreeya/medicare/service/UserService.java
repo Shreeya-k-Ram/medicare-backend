@@ -2,6 +2,7 @@ package com.shreeya.medicare.service;
 
 import com.shreeya.medicare.entity.User;
 import com.shreeya.medicare.repository.UserRepository;
+import com.shreeya.medicare.security.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,9 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    @Autowired
+    private JwtService jwtService;
+
     public LoginResponseDTO loginUser(LoginRequestDTO request) {
 
         User user = userRepository.findByUsername(request.getUsername())
@@ -30,6 +34,8 @@ public class UserService {
         if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
             throw new RuntimeException("Invalid Password");
         }
-        return new LoginResponseDTO("Login Successful");
+
+        String token = jwtService.generateToken(user.getUsername());
+        return new LoginResponseDTO(token);
     }
 }
