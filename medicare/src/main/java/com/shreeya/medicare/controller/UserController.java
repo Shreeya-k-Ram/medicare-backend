@@ -23,4 +23,9 @@ public class UserController {
     public LoginResponseDTO login(@RequestBody LoginRequestDTO request) {
         return userService.loginUser(request);
     }
+
+    @GetMapping("/admin/test")
+    public String AdminTest() {
+        return "Welcome Admin!";
+    }
 }
