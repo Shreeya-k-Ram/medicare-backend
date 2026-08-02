@@ -5,6 +5,8 @@ import com.shreeya.medicare.dto.PatientRequestDTO;
 import com.shreeya.medicare.dto.PatientResponseDTO;
 import com.shreeya.medicare.entity.Patient;
 import com.shreeya.medicare.repository.PatientRepository;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,12 +18,19 @@ import org.springframework.data.domain.Sort;
 @Service
 public class PatientService {
 
+    private static final Logger logger = LoggerFactory.getLogger(PatientService.class);
+
     @Autowired
     private PatientRepository patientRepository;
 
     // Save Patient
     public Patient savePatient(Patient patient) {
-        return patientRepository.save(patient);
+
+        logger.info("Saving patient: {}", patient.getName());
+        Patient savedPatient = patientRepository.save(patient);
+        logger.info("Patient saved successfully with ID: {}", savedPatient.getId());
+
+        return savedPatient;
     }
 
     // Get All Patients
@@ -39,6 +48,8 @@ public class PatientService {
 
     // Update Patient
     public PatientResponseDTO updatePatient(Long id, PatientRequestDTO patientRequestDTO) {
+
+        logger.info("Updating patient with ID: {}", id);
         Patient existingPatient = patientRepository.findById(id).orElse(null);
 
         if (existingPatient == null || !existingPatient.isActive()) {
@@ -53,6 +64,8 @@ public class PatientService {
         existingPatient.setDisease(patientRequestDTO.getDisease());
 
         Patient updatedPatient = patientRepository.save(existingPatient);
+
+        logger.info("Patient updated successfully with ID: {}", updatedPatient.getName());
 
         return convertToDTO(updatedPatient);
     }
@@ -77,6 +90,8 @@ public class PatientService {
     }
 
     public boolean deactivatePatient(Long id) {
+
+        logger.info("Deactivating patient with ID: {}", id);
         Patient patient = patientRepository.findById(id).orElse(null);
 
         if (patient == null || !patient.isActive()) {
@@ -84,6 +99,8 @@ public class PatientService {
         }
         patient.setActive(false);
         patientRepository.save(patient);
+
+        logger.info("Patient deactivated successfully.");
 
         return true;
     }
