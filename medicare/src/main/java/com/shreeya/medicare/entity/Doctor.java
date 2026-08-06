@@ -1,7 +1,10 @@
 package com.shreeya.medicare.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+
+import java.util.List;
 
 @Entity
 public class Doctor {
@@ -27,6 +30,10 @@ public class Doctor {
     private String email;
 
     private int experience;
+
+    @OneToMany(mappedBy = "doctor")
+    @JsonManagedReference
+    private List<Appointment> appointments;
 
     public Doctor() {
     }

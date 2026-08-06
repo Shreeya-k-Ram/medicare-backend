@@ -1,7 +1,15 @@
 package com.shreeya.medicare.entity;
 
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+
 import jakarta.validation.constraints.*;
+
+import java.util.List;
 
 @Entity
 public class Patient {
@@ -32,6 +40,10 @@ public class Patient {
 
     @NotBlank(message = "Disease cannot be blank")
     private String disease;
+
+    @OneToMany(mappedBy = "patient")
+    @JsonManagedReference
+    private List<Appointment> appointment;
 
     public Patient() {
     }
@@ -98,6 +110,14 @@ public class Patient {
 
     public void setDisease(String disease) {
         this.disease = disease;
+    }
+
+    public List<Appointment> getAppointment() {
+        return appointment;
+    }
+
+    public void setAppointment(List<Appointment> appointment) {
+        this.appointment = appointment;
     }
 
     private boolean active = true;
