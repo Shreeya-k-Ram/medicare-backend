@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.shreeya.medicare.dto.LoginRequestDTO;
 import com.shreeya.medicare.dto.LoginResponseDTO;
 
+import java.util.Optional;
+
 @Service
 public class UserService {
     @Autowired
@@ -21,6 +23,33 @@ public class UserService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
         return userRepository.save(user);
+    }
+
+    public boolean forgotPassword(String email) {
+
+        Optional<User> userOptional = userRepository.findByEmail(email);
+
+        if (userOptional.isEmpty()) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean resetPassword(String email, String newPassword) {
+
+        Optional<User> userOptional = userRepository.findByEmail(email);
+
+        if (userOptional.isEmpty()) {
+            return false;
+        }
+
+        User user = userOptional.get();
+
+        user.setPassword(passwordEncoder.encode(newPassword));
+        userRepository.save(user);
+
+        return true;
     }
 
     @Autowired
