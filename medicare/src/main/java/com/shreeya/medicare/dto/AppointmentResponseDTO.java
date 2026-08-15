@@ -73,6 +73,4 @@ public class AppointmentResponseDTO {
     public void setStatus(String status) {
         this.status = status;
     }
-
-
 }

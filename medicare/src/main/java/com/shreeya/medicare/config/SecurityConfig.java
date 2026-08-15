@@ -42,15 +42,11 @@ public class SecurityConfig {
 
                         .requestMatchers("/users/admin/**").hasRole("ADMIN")
 
-                        //.requestMatchers(HttpMethod.PUT,"/appointments/*/approve").hasRole("ADMIN")
-
-                        //.requestMatchers(HttpMethod.PUT,"/appointments/*/cancel").hasRole("ADMIN")
-
                         .requestMatchers(HttpMethod.PUT, "/appointments/*/approve")
                         .hasAnyRole("ADMIN", "DOCTOR")
 
                         .requestMatchers(HttpMethod.PUT, "/appointments/*/cancel")
-                        .hasAnyRole("ADMIN", "DOCTOR")
+                        .hasAnyRole("DOCTOR")
 
                         .requestMatchers(HttpMethod.GET, "/patients/**").permitAll()
 

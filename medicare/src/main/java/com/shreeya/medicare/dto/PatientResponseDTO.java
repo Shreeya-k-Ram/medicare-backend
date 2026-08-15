@@ -8,6 +8,7 @@ public class PatientResponseDTO {
     private String gender;
     private String phone;
     private String email;
+    private String address;
     private String disease;
 
     // Constructor
@@ -62,6 +63,14 @@ public class PatientResponseDTO {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getDisease() {

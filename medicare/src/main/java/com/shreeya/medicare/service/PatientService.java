@@ -84,6 +84,7 @@ public class PatientService {
         dto.setGender(patient.getGender());
         dto.setPhone(patient.getPhone());
         dto.setEmail(patient.getEmail());
+        dto.setAddress(patient.getAddress());
         dto.setDisease(patient.getDisease());
 
         return dto;
