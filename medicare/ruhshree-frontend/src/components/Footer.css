@@ -1,0 +1,323 @@
+.footer {
+  width: 100%;
+
+  background: #252d4a;
+
+  color: #ffffff;
+}
+
+
+/* =========================================
+   CONTAINER
+
+   max-w-7xl
+   px-4
+   py-16
+   md:px-8
+========================================= */
+
+.footer-container {
+  width: 100%;
+  max-width: 1280px;
+
+  margin: 0 auto;
+
+  padding: 64px 32px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   TOP SECTION
+
+   flex
+   justify-between
+   gap-8
+========================================= */
+
+.footer-top {
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: space-between;
+
+  gap: 32px;
+}
+
+
+/* =========================================
+   HEADING
+========================================= */
+
+.footer-heading {
+  max-width: 576px;
+}
+
+.footer-heading h2 {
+  margin: 0;
+
+  font-size: 36px;
+  line-height: 40px;
+
+  font-weight: 600;
+
+  letter-spacing: -0.025em;
+
+  color: #ffffff;
+}
+
+.footer-heading p {
+  margin: 12px 0 0;
+
+  font-size: 14px;
+  line-height: 20px;
+
+  color: rgba(255, 255, 255, 0.7);
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.footer-buttons {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 12px;
+}
+
+
+/* Base button */
+
+.footer-button {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 12px 20px;
+
+  border-radius: 999px;
+
+  font-size: 14px;
+  line-height: 20px;
+
+  font-weight: 500;
+
+  text-decoration: none;
+
+  white-space: nowrap;
+
+  transition:
+          background 0.2s ease,
+          transform 0.2s ease;
+}
+
+
+/* Patient + Doctor */
+
+.footer-button-light {
+  background: rgba(255, 255, 255, 0.10);
+
+  color: #ffffff;
+}
+
+.footer-button-light:hover {
+  background: rgba(255, 255, 255, 0.15);
+
+  transform: translateY(-1px);
+}
+
+
+/* Admin */
+
+.footer-button-admin {
+  background: #ffffff;
+
+  color: #252d4a;
+}
+
+.footer-button-admin:hover {
+  background: rgba(255, 255, 255, 0.90);
+
+  transform: translateY(-1px);
+}
+
+.footer-button-admin svg {
+  width: 16px;
+  height: 16px;
+
+  stroke-width: 2;
+}
+
+
+/* =========================================
+   BOTTOM SECTION
+
+   mt-12
+   border-t
+   pt-6
+========================================= */
+
+.footer-bottom {
+  margin-top: 48px;
+
+  padding-top: 24px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.10);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 16px;
+}
+
+
+/* =========================================
+   FOOTER BRAND
+========================================= */
+
+.footer-brand {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  text-decoration: none;
+
+  color: #ffffff;
+}
+
+
+/* =========================================
+   FOOTER LOGO
+
+   h-9 w-9
+   rounded-xl
+   bg-white/10
+========================================= */
+
+.footer-logo {
+  width: 36px;
+  height: 36px;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.10);
+
+  color: #ffffff;
+
+  flex-shrink: 0;
+}
+
+.footer-logo svg {
+  width: 20px;
+  height: 20px;
+
+  stroke-width: 2;
+}
+
+
+/* =========================================
+   BRAND TEXT
+========================================= */
+
+.footer-brand-text {
+  display: flex;
+
+  flex-direction: column;
+
+  line-height: 1;
+}
+
+.footer-title {
+  font-size: 15px;
+  line-height: 1;
+
+  font-weight: 600;
+
+  letter-spacing: -0.025em;
+
+  color: #ffffff;
+}
+
+.footer-subtitle {
+  margin-top: 4px;
+
+  font-size: 10px;
+  line-height: 1;
+
+  font-weight: 400;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.16em;
+
+  color: rgba(255, 255, 255, 0.60);
+}
+
+
+/* =========================================
+   COPYRIGHT
+========================================= */
+
+.footer-copyright {
+  margin: 0;
+
+  font-size: 12px;
+  line-height: 16px;
+
+  color: rgba(255, 255, 255, 0.60);
+
+  text-align: right;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 767px) {
+
+  .footer-container {
+    padding: 64px 16px;
+  }
+
+  .footer-top {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .footer-heading h2 {
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .footer-buttons {
+    width: 100%;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .footer-copyright {
+    text-align: left;
+  }
+}

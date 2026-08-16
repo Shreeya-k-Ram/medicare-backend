@@ -1,0 +1,26 @@
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(35px);
+  
+    transition:
+      opacity 1.8s ease,
+      transform 1.8s ease;
+  
+    will-change: opacity, transform;
+  }
+  
+  .scroll-reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  
+  /* Accessibility */
+  
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }

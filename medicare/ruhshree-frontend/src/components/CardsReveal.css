@@ -1,0 +1,27 @@
+.staggered-item {
+    opacity: 0;
+  
+    transform: translateY(25px);
+  
+    transition:
+      opacity 0.7s ease,
+      transform 0.7s ease;
+  
+    transition-delay: var(--stagger-delay);
+  
+    will-change: opacity, transform;
+  }
+  
+  .staggered-item-visible {
+    opacity: 1;
+  
+    transform: translateY(0);
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .staggered-item {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }

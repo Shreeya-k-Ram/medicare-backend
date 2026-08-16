@@ -1,0 +1,407 @@
+.clinic-page {
+    min-height: 100vh;
+    background: #f7f5ef;
+    color: #17182c;
+}
+
+
+/* HERO */
+
+.clinic-hero {
+    min-height: 620px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 80px 8%;
+
+    background:
+            radial-gradient(
+                    circle at 80% 20%,
+                    rgba(190, 180, 150, 0.25),
+                    transparent 35%
+            ),
+            #f7f5ef;
+}
+
+.clinic-hero-content {
+    max-width: 850px;
+}
+
+.clinic-label {
+    margin: 0 0 18px;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 2.5px;
+
+    color: #8b806d;
+}
+
+.clinic-hero h1 {
+    margin: 0;
+
+    font-size: 64px;
+    line-height: 1.05;
+
+    letter-spacing: -2.5px;
+
+    max-width: 850px;
+}
+
+.clinic-hero h1 span {
+    color: #8b806d;
+}
+
+.clinic-hero-text {
+    max-width: 650px;
+
+    margin: 28px 0;
+
+    font-size: 18px;
+    line-height: 1.7;
+
+    color: #6f6b64;
+}
+
+.clinic-cta {
+    display: inline-block;
+
+    padding: 14px 22px;
+
+    border-radius: 12px;
+
+    background: #17182c;
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    transition: 0.2s;
+}
+
+.clinic-cta:hover {
+    transform: translateY(-2px);
+
+    background: #292a3f;
+}
+
+
+/* COMMON SECTION */
+
+.clinic-section,
+.clinic-workflow {
+    padding: 110px 8%;
+}
+
+.clinic-heading {
+    max-width: 700px;
+
+    margin-bottom: 55px;
+}
+
+.clinic-heading h2 {
+    margin: 0 0 15px;
+
+    font-size: 44px;
+
+    letter-spacing: -1.5px;
+}
+
+.clinic-heading > p:last-child {
+    color: #77736c;
+
+    font-size: 16px;
+
+    line-height: 1.7;
+}
+
+
+/* FEATURE CARDS */
+
+.clinic-features {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 18px;
+}
+
+.clinic-card {
+    padding: 30px;
+
+    background: white;
+
+    border: 1px solid #e9e5dc;
+
+    border-radius: 20px;
+
+    transition: 0.25s;
+}
+
+.clinic-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+            0 20px 40px rgba(20, 24, 45, 0.08);
+}
+
+.clinic-icon {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 25px;
+
+    border-radius: 14px;
+
+    background: #17182c;
+    color: white;
+
+    font-size: 20px;
+}
+
+.clinic-card h3 {
+    margin: 0 0 12px;
+
+    font-size: 18px;
+}
+
+.clinic-card p {
+    margin: 0;
+
+    color: #77736c;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+
+/* WORKFLOW */
+
+.clinic-workflow {
+    background: #17182c;
+
+    color: white;
+}
+
+.clinic-workflow .clinic-label {
+    color: #b8ad9a;
+}
+
+.clinic-workflow .clinic-heading h2 {
+    color: white;
+}
+
+.clinic-steps {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+.clinic-step {
+    padding: 30px 0;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.clinic-step span {
+    color: #b8ad9a;
+
+    font-size: 12px;
+
+    letter-spacing: 1px;
+}
+
+.clinic-step h3 {
+    margin: 25px 0 12px;
+
+    font-size: 19px;
+}
+
+.clinic-step p {
+    margin: 0;
+
+    color: #aaaab4;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+
+/* WHY */
+
+.clinic-why {
+    padding: 120px 8%;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 100px;
+
+    align-items: center;
+}
+
+.clinic-why-content h2 {
+    margin: 0 0 25px;
+
+    font-size: 50px;
+
+    line-height: 1.1;
+
+    letter-spacing: -2px;
+}
+
+.clinic-why-content h2 span {
+    color: #8b806d;
+}
+
+.clinic-why-content > p:last-child {
+    max-width: 560px;
+
+    color: #77736c;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+}
+
+.clinic-points {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 28px;
+}
+
+.clinic-points > div {
+    padding-bottom: 25px;
+
+    border-bottom: 1px solid #dfdbd2;
+}
+
+.clinic-points strong {
+    font-size: 20px;
+}
+
+.clinic-points p {
+    margin: 8px 0 0;
+
+    color: #77736c;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+
+/* FINAL CTA */
+
+.clinic-final {
+    padding: 100px 8%;
+
+    text-align: center;
+
+    background: #e9e4d8;
+}
+
+.clinic-final h2 {
+    max-width: 700px;
+
+    margin: 0 auto 20px;
+
+    font-size: 48px;
+
+    line-height: 1.1;
+
+    letter-spacing: -1.5px;
+}
+
+.clinic-final > p:not(.clinic-label) {
+    margin: 0 auto 30px;
+
+    color: #77736c;
+
+    max-width: 550px;
+
+    line-height: 1.7;
+}
+
+.clinic-cta-light {
+    background: #17182c;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 1000px) {
+
+    .clinic-features,
+    .clinic-steps {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .clinic-why {
+        grid-template-columns: 1fr;
+
+        gap: 50px;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .clinic-hero {
+        min-height: 550px;
+
+        padding: 60px 25px;
+    }
+
+    .clinic-hero h1 {
+        font-size: 42px;
+
+        letter-spacing: -1.5px;
+    }
+
+    .clinic-hero-text {
+        font-size: 15px;
+    }
+
+    .clinic-section,
+    .clinic-workflow,
+    .clinic-why {
+        padding: 75px 25px;
+    }
+
+    .clinic-heading h2 {
+        font-size: 34px;
+    }
+
+    .clinic-features,
+    .clinic-steps {
+        grid-template-columns: 1fr;
+    }
+
+    .clinic-why-content h2 {
+        font-size: 38px;
+    }
+
+    .clinic-final {
+        padding: 75px 25px;
+    }
+
+    .clinic-final h2 {
+        font-size: 36px;
+    }
+}
