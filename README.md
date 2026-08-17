@@ -1,13 +1,14 @@
-🏥 Medicare
+# 🏥 Medicare
 
-RuhShree Healthcare Platform
+### RuhShree Healthcare Platform
 
 It is a full-stack healthcare web application designed to simplify interactions between patients and doctors through a secure and user-friendly digital platform.
 
 The application combines a React.js frontend with a Spring Boot REST API backend and MySQL database, using JWT-based authentication and Spring Security to protect API resources.
 
+---
 
-🌐 Project Overview
+## 🌐 Project Overview
 
 Medicare provides a centralized platform for managing essential healthcare workflows such as:
 
@@ -21,10 +22,11 @@ Medicare provides a centralized platform for managing essential healthcare workf
 
 The project was developed to gain practical experience in building a real-world full-stack application using modern frontend, backend, database, and security technologies.
 
+---
 
-✨ Key Features
+## ✨ Key Features
 
-👤 Patient
+# 👤 Patient
 
 - User registration and login
 - Secure JWT authentication
@@ -33,14 +35,14 @@ The project was developed to gain practical experience in building a real-world 
 - Book doctor appointments
 - View appointment details
 
-👨‍⚕️ Doctor
+# 👨‍⚕️ Doctor
 
 - Secure doctor authentication
 - View assigned appointments
 - Access relevant appointment and patient information
 - Manage doctor-related information
 
-📅 Appointment
+# 📅 Appointment
 
 - Book appointments between patients and doctors
 - Store appointment information
@@ -48,7 +50,7 @@ The project was developed to gain practical experience in building a real-world 
 - View doctor-specific appointments
 - Secure appointment APIs
 
-🔐 Security
+# 🔐 Security
 
 - JWT-based authentication
 - Spring Security
@@ -56,10 +58,11 @@ The project was developed to gain practical experience in building a real-world 
 - JWT request filtering
 - Token-based communication between frontend and backend
 
+---
 
-🔄 Application Workflow
+## 🔄 Application Workflow
 
-👤 Patient Workflow
+# 👤 Patient Workflow
 
 Home Page
     ↓
@@ -77,7 +80,7 @@ Appointment Confirmation
     ↓
 View Appointment
 
-👨‍⚕️ Doctor Workflow
+# 👨‍⚕️ Doctor Workflow
 
 Login
    ↓
@@ -89,18 +92,18 @@ View Appointments
    ↓
 View Relevant Patient Information
 
+---
 
-🛠️ Technology Stack
+## 🛠️ Technology Stack
 
-🎨 Frontend
+# 🎨 Frontend
 
 - React.js
 - JavaScript
 - HTML5
 - CSS3
-- Fetch API
 
-⚙️ Backend
+# ⚙️ Backend
 
 - Java
 - Spring Boot
@@ -109,11 +112,11 @@ View Relevant Patient Information
 - JWT
 - OpenAPI / Swagger
 
-🗄️ Database
+# 🗄️ Database
 
 - MySQL
 
-🔧 Development & Tools
+# 🔧 Development & Tools
 
 - Maven
 - Git
@@ -121,11 +124,12 @@ View Relevant Patient Information
 - IntelliJ IDEA
 - VS Code
 
+---
 
-🏗️ Application Architecture
+## 🏗️ Application Architecture
 
 Medicare follows a layered Controller-Service-Repository architecture.
-
+```
 ┌──────────────────────────┐
 │      React Frontend      │
 └────────────┬─────────────┘
@@ -146,12 +150,13 @@ Medicare follows a layered Controller-Service-Repository architecture.
 ┌──────────────────────────┐
 │          MySQL           │
 └──────────────────────────┘
+```
+---
 
-
-📁 Project Structure
+## 📁 Project Structure
 
 The project is organized into a React frontend and a layered Spring Boot backend.
-
+```
 medicare/
 │
 ├── ruhshree-frontend/
@@ -177,13 +182,14 @@ medicare/
 │
 ├── pom.xml
 └── README.md
+```
+---
 
-
-🔐 Authentication & Authorization
+## 🔐 Authentication & Authorization
 
 Medicare uses JWT-based authentication with Spring Security to secure communication between the frontend and backend.
 
-🔑 Authentication Flow
+# 🔑 Authentication Flow
 
 User Login
     ↓
@@ -201,8 +207,9 @@ JWT Token Validated
     ↓
 Protected Resource Access
 
+---
 
-🛡️ Security Components
+## 🛡️ Security Components
 
 - "SecurityConfig"
 - "JwtFilter"
@@ -211,21 +218,24 @@ Protected Resource Access
 - JWT authentication
 - Protected REST endpoints
 
+---
 
-🔄 API Overview
+## 🔄 API Overview
 
-Module        |    Endpoint              |      Method              |      Purpose
-User          |    "/users/login"        |      Post                |      User authentication
-Patient       |    "/patients/..."       |      GET / POST / PUT    |      Patient operations
-Doctor        |    "/doctors/..."        |      GET / POST / PUT    |      Doctor operations
-Appointment   |    "/appointments/..."   |      GET / POST / PUT    |      Appointment operations
+| Module | Endpoint | Method | Purpose |
+|--------|----------|--------|---------|
+| User | `/users/login` | POST | User authentication |
+| Patient | `/patients/...` | GET / POST / PUT | Patient operations |
+| Doctor | `/doctors/...` | GET / POST / PUT | Doctor operations |
+| Appointment | `/appointments/...` | GET / POST / PUT | Appointment operations |
 
-API documentation is configured using OpenAPI / Swagger.
+API documentation is configured using **OpenAPI / Swagger**.
 
+---
 
-🚀 Getting Started
+## 🚀 Getting Started
 
-📋 Prerequisites
+# 📋 Prerequisites
 
 - Java 17+
 - Maven
@@ -233,32 +243,44 @@ API documentation is configured using OpenAPI / Swagger.
 - MySQL
 - Git
 
-1️. Clone the Repository
+### 1️. Clone the Repository
+```
+git clone
+https://github.com/Shreeya-k-Ram/ruhshree-health-platform.git
+cd ruhshree-health-platform
+```
 
-git clone: https://github.com/Shreeya-k-Ram/ruhshree-health-platform
-cd medicare
-
-
-2️. Configure MySQL
+### 2️. Configure MySQL
 
 -> Create a MySQL database for the application.
--> Update the database configuration in:
--> src/main/resources/application.properties
--> Use your local credentials:
--> spring.datasource.url=jdbc:mysql://localhost:3306/medicare
--> spring.datasource.username=YOUR_USERNAME
--> spring.datasource.password=YOUR_PASSWORD
 
-3️. Run the Spring Boot Backend
+-> Update the database configuration in:src/main/resources/application.properties
+ 
+-> Use your local credentials:
+```
+spring.datasource.url=jdbc:mysql://localhost:3306/medicare
+spring.datasource.username=YOUR_USERNAME
+spring.datasource.password=YOUR_PASSWORD
+```
+
+### 3️. Run the Spring Boot Backend
 
 From the project root:
 
-Windows: mvnw.cmd spring-boot:run
-Linux / macOS: ./mvnw spring-boot:run
+Windows
+```
+mvnw.cmd spring-boot:run
+```
+Linux / macOS 
+```
+./mvnw spring-boot:run
+```
+The backend will start at: 
+```
+http://localhost:8080
+```
 
-The backend will start at: http://localhost:8080
-
-4️. Run the React Frontend
+### 4️. Run the React Frontend
 
 Open a new terminal:
 ```
@@ -266,14 +288,20 @@ cd ruhshree-frontend
 npm install
 npm run dev
 ```
-The frontend will be available at: http://localhost:5173
+The frontend will be available at: 
+```
+http://localhost:5173
+```
 
-5️. Open the Application
+### 5️. Open the Application
 
-Once both frontend and backend are running open: http://localhost:5173
+Once both frontend and backend are running open:
+```
+http://localhost:5173
+```
+---
 
-
-🔮 Future Enhancements
+## 🔮 Future Enhancements
 
 The platform can be extended with:
 
@@ -285,8 +313,9 @@ The platform can be extended with:
 - 🔍 Advanced search, filtering, and pagination
 - ☁️ Cloud deployment and production monitoring
 
+---
 
-📚 What I Learned
+## 📚 What I Learned
 
 Through this project, I gained practical experience in:
 
@@ -300,15 +329,21 @@ Through this project, I gained practical experience in:
 - Handling secured API requests and CORS
 - Using Git and GitHub for version control
 
+---
 
-👩‍💻 Author
+## 👩‍💻 Author
 
 Shreeya Ram
 
 Java Developer | Full-Stack Developer
 
-GitHub:
+- GitHub:
+```
 https://github.com/Shreeya-k-Ram
+```
 
-LinkedIn:
+- LinkedIn:
+```
 https://www.linkedin.com/in/shreeya-kumari-ram-bba022334
+```
+---
