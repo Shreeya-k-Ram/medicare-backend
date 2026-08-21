@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./BookAppointment.css";
+import { API_BASE_URL } from "../services/api";
 
 function BookAppointment() {
 
@@ -30,7 +31,7 @@ function BookAppointment() {
             try {
 
                 const response = await fetch(
-                    "http://localhost:8080/doctors",
+                    `${API_BASE_URL}/doctors`,
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,
@@ -97,7 +98,7 @@ function BookAppointment() {
         try {
 
             const response = await fetch(
-                "http://localhost:8080/appointments",
+                `${API_BASE_URL}/appointments`,
                 {
                     method: "POST",
 

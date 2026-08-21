@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Patient.css";
+import { API_BASE_URL } from "../services/api";
 
 function Patient() {
 
@@ -29,7 +30,7 @@ function Patient() {
 
             try {
                 const patientResponse = await fetch(
-                    `http://localhost:8080/patients/${patientId}`,
+                    `${API_BASE_URL}/patients/${patientId}`,
                     {
                         method: "GET",
                         headers: {
@@ -50,7 +51,7 @@ function Patient() {
                 setPatient(patientData);
 
                 const appointmentResponse = await fetch(
-                    `http://localhost:8080/appointments/patient/${patientId}`,
+                    `${API_BASE_URL}/appointments/patient/${patientId}`,
                     {
                         method: "GET",
                         headers: {
@@ -386,9 +387,6 @@ function Patient() {
                                         key={appointment.id}
                                     >
 
-
-                                        {/* DOCTOR */}
-
                                         <div className="appointment-doctor">
 
                                             <div className="appointment-doctor-avatar">
@@ -417,9 +415,6 @@ function Patient() {
 
                                         </div>
 
-
-                                        {/* DATE */}
-
                                         <div className="appointment-info">
 
                                             <span>
@@ -432,9 +427,6 @@ function Patient() {
 
                                         </div>
 
-
-                                        {/* TIME */}
-
                                         <div className="appointment-info">
 
                                             <span>
@@ -446,9 +438,6 @@ function Patient() {
                                             </strong>
 
                                         </div>
-
-
-                                        {/* STATUS */}
 
                                         <div className="appointment-status-container">
 

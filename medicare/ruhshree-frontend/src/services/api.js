@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://ruhshree-health-platform-production-1d7d.up.railway.app";
+export const API_BASE_URL = "https://ruhshree-health-platform-production-1d7d.up.railway.app";
 
 export const loginUser = async (username, password) => {
     const response = await fetch(`${API_BASE_URL}/users/login`, {

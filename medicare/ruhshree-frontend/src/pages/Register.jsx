@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import doctorImage from "../assets/doctor.jpg";
 import "./Register.css";
+import { API_BASE_URL } from "../services/api";
 
 function Register() {
 
@@ -32,7 +33,7 @@ function Register() {
         try {
 
             const response = await fetch(
-                "http://localhost:8080/users/register",
+                `${API_BASE_URL}/users/register`,
                 {
                     method: "POST",
 

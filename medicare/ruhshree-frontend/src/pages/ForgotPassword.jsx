@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import doctorImage from "../assets/doctor.jpg";
 import "./ForgotPassword.css";
+import { API_BASE_URL } from "../services/api";
 
 function ForgotPassword() {
 
@@ -32,7 +33,7 @@ function ForgotPassword() {
         try {
 
             const response = await fetch(
-                `http://localhost:8080/users/reset-password?email=${encodeURIComponent(email)}&newPassword=${encodeURIComponent(newPassword)}`,
+                `${API_BASE_URL}/users/reset-password?email=${encodeURIComponent(email)}&newPassword=${encodeURIComponent(newPassword)}`,
                 {
                     method: "POST"
                 }

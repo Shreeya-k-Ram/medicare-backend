@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Admin.css";
+import { API_BASE_URL } from "../services/api";
 
 function Admin() {
 
@@ -33,17 +34,17 @@ function Admin() {
                     await Promise.all([
 
                         fetch(
-                            "http://localhost:8080/patients",
+                            `${API_BASE_URL}/patients`,
                             { headers }
                         ),
 
                         fetch(
-                            "http://localhost:8080/doctors",
+                            `${API_BASE_URL}/doctors`,
                             { headers }
                         ),
 
                         fetch(
-                            "http://localhost:8080/appointments",
+                            `${API_BASE_URL}/appointments`,
                             { headers }
                         )
 
@@ -96,17 +97,12 @@ function Admin() {
 
     }, [token]);
 
-
-    // ===============================
-    // APPROVE APPOINTMENT
-    // ===============================
-
     const approveAppointment = async (id) => {
 
         try {
 
             const response = await fetch(
-                `http://localhost:8080/appointments/${id}/approve`,
+                `${API_BASE_URL}/appointments/${id}/approve`,
                 {
                     method: "PUT",
                     headers: {
@@ -141,11 +137,6 @@ function Admin() {
         }
     };
 
-
-    // ===============================
-    // COUNTS
-    // ===============================
-
     const pendingCount =
         appointments.filter(
             appointment =>
@@ -157,11 +148,6 @@ function Admin() {
             appointment =>
                 appointment.status === "APPROVED"
         ).length;
-
-
-    // ===============================
-    // LOADING
-    // ===============================
 
     if (loading) {
 
@@ -181,11 +167,6 @@ function Admin() {
             </div>
         );
     }
-
-
-    // ===============================
-    // ERROR
-    // ===============================
 
     if (error) {
 
@@ -215,9 +196,6 @@ function Admin() {
 
             <div className="admin-container">
 
-
-                {/* HEADER */}
-
                 <header className="admin-header">
 
                     <div>
@@ -241,9 +219,6 @@ function Admin() {
                     </div>
 
                 </header>
-
-
-                {/* STATISTICS */}
 
                 <section className="admin-stats">
 
@@ -315,9 +290,6 @@ function Admin() {
                     </div>
 
                 </section>
-
-
-                {/* APPOINTMENTS */}
 
                 <section className="admin-section">
 
@@ -480,9 +452,6 @@ function Admin() {
 
                 </section>
 
-
-                {/* PATIENTS */}
-
                 <section className="admin-section">
 
                     <div className="section-heading">
@@ -591,9 +560,6 @@ function Admin() {
                     </div>
 
                 </section>
-
-
-                {/* DOCTORS */}
 
                 <section className="admin-section">
 

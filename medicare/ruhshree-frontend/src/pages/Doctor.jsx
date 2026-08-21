@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Doctor.css";
+import { API_BASE_URL } from "../services/api";
 
 function Doctor() {
     const [doctor, setDoctor] = useState(null);
@@ -22,7 +23,7 @@ function Doctor() {
 
             // Fetch doctor profile
             const doctorResponse = await fetch(
-                `http://localhost:8080/doctors/${doctorId}`,
+                `${API_BASE_URL}/doctors/${doctorId}`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -41,7 +42,7 @@ function Doctor() {
 
             // Fetch doctor's appointments
             const appointmentResponse = await fetch(
-                `http://localhost:8080/appointments/doctor/${doctorId}`,
+                `${API_BASE_URL}/appointments/doctor/${doctorId}`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -71,7 +72,7 @@ function Doctor() {
     const approveAppointment = async (appointmentId) => {
         try {
             const response = await fetch(
-                `http://localhost:8080/appointments/${appointmentId}/approve`,
+                `${API_BASE_URL}/appointments/${appointmentId}/approve`,
                 {
                     method: "PUT",
                     headers: {
@@ -114,7 +115,7 @@ function Doctor() {
 
         try {
             const response = await fetch(
-                `http://localhost:8080/appointments/${appointmentId}/cancel`,
+                `${API_BASE_URL}/appointments/${appointmentId}/cancel`,
                 {
                     method: "PUT",
                     headers: {
